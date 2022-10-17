@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.andrasferenczi.swingrendering.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.andrasferenczi.swingrendering.MyBundle
 
 class MyApplicationService {
 
