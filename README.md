@@ -1,5 +1,26 @@
 # swing-rendering
 
+Meant for reproducing a flickering issue where it is not possible to draw on top JCef browser.
+
+> Flickering occurred on M1 Mac Mini
+
+## Important parts
+
+- `PreviewPaneUI`:
+  - there is a `Timer` in that file that makes sure the overlay is invalidated every 7ms. This way the background is drawn (most of the time) over the browser.
+- `StuffPreviewFileEditor` `runLoadingSwitchTest`:
+  - this is the controller that changes the overlay
+ 
+## Reproducing the issue
+
+- Start the project, open any file.
+- Reopen the preview, because nothing appears for some reason (don't know why)
+- Every 5 seconds a loading overlay appears. If the mouse is not moving, or it is outside the editor area (like over the top toolbar), flickering will occur.
+
+> If the error cannot be reproduced on the first try, try to run the plugin again. After I changed the invalidation timer to 50ms and then back to 7ms I could reliably see the flickering again.
+
+---
+
 ![Build](https://github.com/andrasferenczi/swing-rendering/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)

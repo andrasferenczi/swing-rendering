@@ -1,18 +1,16 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.andrasferenczi.swingrendering</id>
-    <name>swing-rendering</name>
+    <name>Swing Rendering</name>
     <vendor>andrasferenczi</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.andrasferenczi.swingrendering.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.andrasferenczi.swingrendering.services.MyProjectService"/>
+        <fileEditorProvider
+                implementation="com.github.andrasferenczi.swingrendering.preview.StuffPreviewSplitEditorProvider"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.andrasferenczi.swingrendering.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
 </idea-plugin>
